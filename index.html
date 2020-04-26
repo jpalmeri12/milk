@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="js/raphael.min.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/doubletap.js"></script>
+    <script src="js/resize.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/srs.js"></script>
+    <script src="js/load.js"></script>
+    <script src="js/write.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <title>MILK</title>
+</head>
+
+<body>
+    <div id="stage" class="screen">
+        <div id="newScreen" class="screenBox">
+            <div id="newHeader">Hello!</div>
+            <div id="newExplanation">This is MILK: My Interface for Learning Kanji. I made it because I couldn't find a kanji drawing app that has a spaced repetition system I liked. Also I really like milk which is where the name came from.
+            <br><br>
+            This web app is intended for use with the Kodansha Kanji Learner's Course. If you don't have it, I recommend getting the book. For each kanji you learn, read the entry in the book, and then write the kanji (preferably using a stylus on a tablet) until you've memorized it.
+            <br><br>
+            This app uses a spaced repetition system (SRS) because it seems to work for me, so you get to use it too. Let's get started!
+            <br><br>
+            New kanji per day: <input id="newNewKanji" type="text" value="10"><br><br>
+            Kanji limit (new + relearn; 0 for no limit): <input id="newKanjiLimit" type="text" value="0"><br><br>
+            Start from entry: <input id="newStartFromKanji" type="text" value="0"><br>
+            </div>
+            <div id="newStart">
+                <div id="newStartText" class="ctext buttonText">Start</div>
+            </div>
+        </div>
+        <div id="menuScreen" class="screenBox">
+            <div id="menuLogo">MILK</div>
+            <div id="menuProgress">
+                <div id="menuProgressText" class="ctext buttonText"></div>
+            </div>
+            <div id="menuDay"></div>
+            <div id="menuStart">
+                <div id="menuStartLabel">
+                    <div id="menuStartLabelText" class="ctext"></div>
+                </div>
+                <div id="menuStartNumber">
+                    <div id="menuStartNumberText" class="ctext"></div>
+                </div>
+            </div>
+            <div id="menuGraph">
+                <div id="menuGraphBars"></div>
+            </div>
+            <div id="menuOptions">
+                <div id="menuOptionsText" class="ctext buttonText">Options</div>
+            </div>
+        </div>
+        <div id="gameScreen" class="screenBox">
+            <div id="header">
+                <div id="headerNum">
+                    <div id="headerNumText" class="ctext"></div>
+                </div>
+                <div id="headerKeyword">
+                    <div id="headerKeywordText" class="ctext"></div>
+                </div>
+                <div id="headerReading">
+                    <div id="headerReadingText" class="ctext"></div>
+                </div>
+            </div>
+            <div id="drawingButtons">
+                <div id="undoButton">
+                    <div class="buttonText ctext">Undo</div>
+                </div>
+                <div id="resetButton">
+                    <div class="buttonText ctext">Reset</div>
+                </div>
+                <div id="giveUpButton">
+                    <div class="buttonText ctext">Give Up</div>
+                </div>
+                <div id="saveButton">
+                    <div class="buttonText ctext">Exit</div>
+                </div>
+            </div>
+            <div id="resultButtons">
+                <div id="resultButtonHard" class="resultButton">
+                    <div class="buttonText ctext">Hard</div>
+                </div>
+                <div id="resultButtonOK" class="resultButton">
+                    <div class="buttonText ctext">OK</div>
+                </div>
+                <div id="resultButtonEasy" class="resultButton">
+                    <div class="buttonText ctext">Easy</div>
+                </div>
+            </div>
+            <div id="giveUpButtons">
+                <div id="giveUpContinueButton">
+                    <div class="buttonText ctext">Continue</div>
+                </div>
+            </div>
+            <div id="rankBoxes"></div>
+            <div id="statusBox">
+                <div id="statusMode">
+                    <div id="statusModeText" class="ctext"></div>
+                </div>
+                <div id="statusNumLeft">
+                    <div id="statusNumLeftText" class="ctext"></div>
+                </div>
+                <div id="statusNumLabel">
+                    <div id="statusNumLabelText" class="ctext">to go!</div>
+                </div>
+            </div>
+            <div id="draw">
+                <svg id="svgLines" width="100%" height="100%" style="pointer-events: all" viewBox="0 0 100 100">
+                    <g style="pointer-events: none;">
+                        <line x1="50" y1="0" x2="50" y2="100" style="stroke: #b0b0b0; stroke-width: 1;" stroke-dasharray="4"></line>
+                        <line x1="0" y1="50" x2="100" y2="50" style="stroke: #b0b0b0; stroke-width: 1;" stroke-dasharray="4"></line>
+                    </g>
+                </svg>
+                <div id="svgTrace"></div>
+                <svg id="svgDraw" width="100%" height="100%" style="pointer-events: all" viewBox="0 0 100 100">
+                    <rect id="svgBg" width="100px" height="100px" style="fill: #e0e0e0; opacity: 0;"></rect>
+                    <g id="inputStrokes"></g>
+                </svg>
+            </div>
+        </div>
+        <div id="optionScreen" class="screenBox">
+            <div id="optionsTitle">Options</div>
+            <div id="optionsReturn">
+                <div id="optionsReturnText" class="ctext buttonText">Return</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

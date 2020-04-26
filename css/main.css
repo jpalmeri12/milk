@@ -1,0 +1,580 @@
+@font-face {
+    font-family: 'Kazesawa';
+    src: url('/fonts/Kazesawa-ExtraLight.woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kazesawa';
+    src: url('/fonts/Kazesawa-Light.woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kazesawa';
+    src: url('/fonts/Kazesawa-Regular.woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Kazesawa';
+    src: url('/fonts/Kazesawa-Semibold.woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kazesawa';
+    src: url('/fonts/Kazesawa-Bold.woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kazesawa';
+    src: url('/fonts/Kazesawa-Extrabold.woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+input {
+    padding: 0;
+}
+
+#stage {
+    position: absolute;
+    background-color: white;
+    overflow: hidden;
+}
+
+.screenBox {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    visibility: hidden;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        visibility: visible;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.anim_fadeIn {
+    animation: fadeIn .25s linear normal forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.anim_fadeOut {
+    animation: fadeOut .25s linear normal forwards;
+}
+
+#newHeader {
+    width: 100%;
+    text-align: center;
+    color: #404040;
+    font-size: 1rem;
+    font-family: "Kazesawa";
+    font-weight: bold;
+    position: absolute;
+    top: .5rem;
+}
+
+#newExplanation {
+    width: 14rem;
+    top: 2rem;
+    left: 0.5rem;
+    text-align: center;
+    color: #404040;
+    font-size: .4rem;
+    font-family: "Kazesawa";
+    position: absolute;
+}
+
+#newScreen input {
+    width: 2rem;
+    text-align: center;
+    color: #404040;
+    font-size: .4rem;
+    font-family: "Kazesawa";
+    border: .05rem solid black;
+    border-radius: .25rem;
+}
+
+#newStart {
+    width: 14rem;
+    height: 1.5rem;
+    left: 0.5rem;
+    top: 13rem;
+    position: absolute;
+    background-color: #808080;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+#newStartText {
+    color: #d0d0d0;
+}
+
+#menuLogo {
+    left: 0.5rem;
+    position: absolute;
+    font-size: 1rem;
+    font-family: "Kazesawa";
+    font-weight: bold;
+    color: #808080;
+}
+
+#menuProgress {
+    width: 2rem;
+    height: 1rem;
+    left: 6.5rem;
+    top: 0.25rem;
+    position: absolute;
+    background-color: #b0b0b0;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+#menuDay {
+    right: 0.5rem;
+    position: absolute;
+    font-size: 1rem;
+    font-family: "Kazesawa";
+    font-weight: bold;
+    color: #808080;
+}
+
+#menuStart {
+    width: 14rem;
+    height: 5rem;
+    left: 0.5rem;
+    top: 2rem;
+    position: absolute;
+    background-color: green;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+#menuStartLabel {
+    width: 14rem;
+    height: 2rem;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .25);
+}
+
+#menuStartNumber {
+    width: 14rem;
+    height: 3rem;
+    top: 2rem;
+    position: absolute;
+}
+
+#menuStartLabelText {
+    font-family: "Kazesawa";
+    font-weight: bold;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, .75);
+}
+
+#menuStartNumberText {
+    font-family: "Kazesawa";
+    font-weight: bold;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, .75);
+}
+
+#menuGraph {
+    width: 14rem;
+    height: 5rem;
+    left: 0.5rem;
+    top: 7.5rem;
+    position: absolute;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    border-radius: .25rem;
+}
+
+#menuGraphBars {
+    width: 14rem;
+    height: 5rem;
+    position: absolute;
+}
+
+.menuGraphBarBox {
+    width: 1.4rem;
+    height: 5rem;
+    position: absolute;
+}
+
+.menuGraphBar {
+    left: 0.1rem;
+    width: 1.2rem;
+    height: 5rem;
+    position: absolute;
+    border-top-left-radius: .2rem;
+    border-top-right-radius: .2rem;
+}
+
+.menuGraphNumber {
+    text-align: center;
+    width: 100%;
+    left: 0;
+    font-family: "Kazesawa";
+    font-weight: bold;
+    font-size: .45rem;
+    color: rgba(0, 0, 0, .5);
+    position: absolute;
+}
+
+#menuOptions {
+    width: 14rem;
+    height: 1.5rem;
+    left: 0.5rem;
+    top: 13rem;
+    position: absolute;
+    background-color: #808080;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+#menuOptionsText {
+    color: #d0d0d0;
+}
+
+#draw {
+    border: .2rem solid black;
+    width: 9rem;
+    height: 9rem;
+    left: 3rem;
+    top: 3rem;
+    position: absolute;
+    margin-left: -.2rem;
+    margin-top: -.2rem;
+}
+
+.anim_drawShrink {
+    animation: drawShrink .125s linear forwards;
+}
+
+@keyframes drawShrink {
+    from {
+        transform: scale(1) translate(0);
+    }
+    to {
+        transform: scale(.5) translateX(-50%);
+    }
+}
+
+#svgTrace {
+    width: 100%;
+    height: 100%;
+    border: .2rem solid black;
+    margin-left: -.2rem;
+    margin-top: -.2rem;
+    position: absolute;
+}
+
+.anim_traceShrink {
+    animation: traceShrink .125s linear forwards;
+}
+
+@keyframes traceShrink {
+    from {
+        transform: translate(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+#svgDraw {
+    position: absolute;
+    pointer-events: all;
+}
+
+#svgLines {
+    position: absolute;
+    pointer-events: none;
+}
+
+#inputStrokes {
+    position: absolute;
+    pointer-events: none;
+}
+
+#header {
+    width: 14rem;
+    left: 0.5rem;
+    height: 2rem;
+    top: 0.5rem;
+    position: absolute;
+    background-color: #f0f0f0;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+#headerNum {
+    width: 3rem;
+    height: 2rem;
+    position: absolute;
+    background-color: #404040;
+}
+
+#headerNumText {
+    font-family: "Kazesawa";
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+}
+
+#headerKeyword {
+    width: 11rem;
+    height: 1rem;
+    left: 3rem;
+    position: absolute;
+}
+
+#headerKeywordText {
+    font-family: "Kazesawa";
+    font-size: 0.5rem;
+    color: black;
+}
+
+#headerReading {
+    width: 11rem;
+    height: 1rem;
+    left: 3rem;
+    top: 1rem;
+    position: absolute;
+}
+
+#headerReadingText {
+    font-family: "Kazesawa";
+    font-size: 0.4rem;
+}
+
+.ctext {
+    width: 100%;
+    top: 50%;
+    position: absolute;
+    text-align: center;
+    transform: translateY(-50%);
+}
+
+#undoButton {
+    width: 2rem;
+    height: 1rem;
+    left: .5rem;
+    top: 13.25rem;
+    position: absolute;
+    background-color: #b0b0b0;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+#resetButton {
+    width: 3rem;
+    height: 1.5rem;
+    left: 4rem;
+    top: 13rem;
+    position: absolute;
+    background-color: #427bf5;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+#giveUpButton {
+    width: 3rem;
+    height: 1.5rem;
+    left: 8rem;
+    top: 13rem;
+    position: absolute;
+    background-color: #ba1c1c;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+#saveButton {
+    width: 2rem;
+    height: 1rem;
+    left: 12.5rem;
+    top: 13.25rem;
+    position: absolute;
+    background-color: #b0b0b0;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.resultButton {
+    width: 3rem;
+    height: 1.5rem;
+    top: 13rem;
+    position: absolute;
+    background-color: #ba1c1c;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+#resultButtonHard {
+    left: 1rem;
+    background-color: #d17f1b;
+}
+
+#resultButtonOK {
+    left: 6rem;
+    background-color: #3e7bb8;
+}
+
+#resultButtonEasy {
+    left: 11rem;
+    background-color: #50d46f;
+}
+
+.buttonText {
+    color: white;
+    font-size: .6rem;
+    font-family: "Kazesawa";
+    font-weight: bold;
+}
+
+#statusBox {
+    width: 2rem;
+    height: 3rem;
+    left: 0.375rem;
+    top: 6rem;
+    position: absolute;
+    background-color: #f0f0f0;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+#statusMode {
+    width: 2rem;
+    height: 1rem;
+    position: absolute;
+    background-color: #404040;
+}
+
+#statusModeText {
+    color: white;
+    font-size: .4rem;
+    font-family: "Kazesawa";
+    font-weight: bold;
+}
+
+#statusNumLeft {
+    width: 2rem;
+    height: 1.25rem;
+    top: 1rem;
+    position: absolute;
+}
+
+#statusNumLeftText {
+    color: #404040;
+    font-size: 1rem;
+    font-family: "Kazesawa";
+    font-weight: bold;
+}
+
+#statusNumLabel {
+    width: 2rem;
+    height: 0.5rem;
+    top: 2.25rem;
+    position: absolute;
+}
+
+#statusNumLabelText {
+    color: #404040;
+    font-size: .5rem;
+    font-family: "Kazesawa";
+    font-weight: bold;
+}
+
+#rankBoxes {
+    left: 12.5rem;
+    top: 3rem;
+    position: absolute;
+}
+
+.rankBox {
+    width: 2rem;
+    height: .5rem;
+    position: absolute;
+    border-radius: .5rem;
+    background-color: gray;
+}
+
+.rankBoxSelected {
+    border: .05rem solid black;
+    margin-left: -.05rem;
+    margin-top: -.05rem;
+}
+
+.rankBoxText {
+    width: 100%;
+    top: 50%;
+    position: absolute;
+    text-align: center;
+    transform: translateY(-50%);
+    color: rgba(0, 0, 0, .5);
+    font-size: .4rem;
+    font-family: "Kazesawa";
+    font-weight: bold;
+}
+
+#optionsTitle {
+    width: 100%;
+    text-align: center;
+    color: #404040;
+    font-size: 1rem;
+    font-family: "Kazesawa";
+    font-weight: bold;
+    position: absolute;
+    top: .5rem;
+}
+
+#optionsReturn {
+    width: 14rem;
+    height: 1.5rem;
+    left: 0.5rem;
+    top: 13rem;
+    position: absolute;
+    background-color: #808080;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+#optionsReturnText {
+    color: #d0d0d0;
+}
