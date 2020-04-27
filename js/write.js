@@ -71,9 +71,7 @@ DrawKanji.prototype.mouseout = function (event) {
 DrawKanji.prototype.touch_end = function (event) {
     if (!game.kanjiComplete && !game.kanjiFailed) {
         if (this.active) {
-            alert("touch trace: ready");
             this.touch_trace(event);
-            alert("finish line: ready");
             this.finish_line();
         }
         this.touching = false;
@@ -121,12 +119,9 @@ DrawKanji.prototype.start_line = function () {
 }
 
 DrawKanji.prototype.finish_line = function () {
-    alert("finish line")
     if (this.point_num > 1) {
-        alert("finish stroke")
         this.finishStroke();
     } else {
-        alert("reset brush")
         this.sequence[this.stroke_num] = [];
         this.reset_brush();
     }
@@ -134,7 +129,6 @@ DrawKanji.prototype.finish_line = function () {
 DrawKanji.prototype.finishStroke = function () {
     // Check if the stroke was correct
     var isStrokeCorrect = this.checkStroke(this.stroke_num);
-    console.log(isStrokeCorrect);
     if (isStrokeCorrect) {
         this.stroke_num++;
         this.reset_brush();
