@@ -25,7 +25,6 @@ function DrawKanji() {
         self.touch_move(event);
     }
     el.ontouchend = function (event) {
-        alert("touchend");
         self.touch_end(event);
     }
     el.onmouseout = function (event) {
@@ -70,8 +69,11 @@ DrawKanji.prototype.mouseout = function (event) {
 }
 
 DrawKanji.prototype.touch_end = function (event) {
+    alert("Fired touch end event");
     if (!game.kanjiComplete && !game.kanjiFailed) {
+        alert("Not complete and not failed");
         if (this.active) {
+            alert("active");
             this.touch_trace(event);
             this.finish_line();
         }
