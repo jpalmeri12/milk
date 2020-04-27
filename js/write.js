@@ -153,7 +153,6 @@ DrawKanji.prototype.touch_trace = function (event) {
         if (event.touches.length > 0) {
             var touch = event.touches[0];
             var pos = getCanvasPosition(touch.pageX, touch.pageY);
-            console.log(event, pos);
             this.trace(pos);
         }
         event.preventDefault();
@@ -288,7 +287,6 @@ DrawKanji.prototype.checkStroke = function (strokeId) {
     var drawnPoints = pathToPoints(drawnPath, numPoints);
     // Sum of distances, squared, then take average
     var dist = strokeDistance(strokePoints, drawnPoints);
-    console.log(dist);
     if (dist < this.tolerance) {
         return true;
     }

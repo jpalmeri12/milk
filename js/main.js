@@ -23,8 +23,8 @@ $(async function () {
     initGameButtons();
     // Init graph
     initGraph();
-    // New screen (TODO: Load data from local storage)
-    loadNew();
+    // Load SRS
+    loadSRS();
 });
 
 function loadNew() {
@@ -32,11 +32,10 @@ function loadNew() {
 }
 
 function initGameButtons() {
-    $("#newStart").click(function() {
+    $("#newStart").click(function () {
         startNewFile();
     });
     $("#menuStart").click(function () {
-        console.log("chests")
         beginTask();
     });
     $("#undoButton").click(function () {
@@ -60,11 +59,14 @@ function initGameButtons() {
     $("#resultButtonEasy").click(function () {
         kanjiSRSResult(2);
     });
-    $("#menuOptions").click(function() {
+    $("#menuOptions").click(function () {
         showOptions();
     });
-    $("#optionsReturn").click(function() {
+    $("#optionsReturn").click(function () {
         showScreen("menuScreen");
+    });
+    $("#giveUpContinueButton").click(function() {
+        kanjiSRSReset();
     });
 }
 
@@ -81,7 +83,6 @@ function startNewFile() {
     if (isNaN(kanjiStartFrom) || kanjiStartFrom < 0) {
         kanjiStartFrom = 0;
     }
-    console.log(kanjiPerDay, kanjiLimit, kanjiStartFrom);
     startNewSRS(kanjiPerDay, kanjiLimit, kanjiStartFrom);
     loadMenu();
 }
@@ -103,7 +104,7 @@ function initRankBoxes() {
 function initGraph() {
     var container = $("#menuGraphBars");
     container.empty();
-    for (var i=0; i<10; i++) {
+    for (var i = 0; i < 10; i++) {
         var barBox = $(`<div class="menuGraphBarBox"></div>`);
         var bar = $(`<div id="menuGraphBar${i}" class="menuGraphBar"></div>`);
         var num = $(`<div id="menuGraphNumber${i}" class="menuGraphNumber">1234</div>`)
@@ -111,7 +112,7 @@ function initGraph() {
         bar.append(num);
         container.append(barBox);
         bar.css("background-color", levelColors[i]);
-        barBox.css("left", (1.4*i) + "rem");
+        barBox.css("left", (1.4 * i) + "rem");
     }
 }
 
@@ -135,16 +136,15 @@ function loadMenu() {
     var toLearn = task.kanji.length;
     $("#menuStartNumberText").text(toLearn > 0 ? toLearn : "~");
     $("#menuStart").css("background-color", color);
-    console.log(task);
     // Update graph
     var srsLevels = srsLevelSummary();
     var maxBar = srsLevels.max();
     if (maxBar == 0) {
         maxBar = 1;
     }
-    for (var i=0; i<srsLevels.length; i++) {
+    for (var i = 0; i < srsLevels.length; i++) {
         $("#menuGraphNumber" + i).text(srsLevels[i]);
-        var barHeight = 5/maxBar * srsLevels[i];
+        var barHeight = 5 / maxBar * srsLevels[i];
         $("#menuGraphBar" + i).css({
             "height": barHeight + "rem",
             "top": (5 - barHeight) + "rem"
@@ -157,7 +157,6 @@ function loadMenu() {
     }
     // SRS learned number
     $("#menuProgressText").text(srs.learned);
-    console.log(srsLevels);
     showScreen("menuScreen");
 }
 
@@ -198,7 +197,6 @@ function setCurrentKanji() {
     // Get current kanji
     var kanjiId = game.kanjiIds[game.currentKanji];
     var kanji = db[kanjiId];
-    console.log(kanji);
     drawkanji.setKanji(kanji, {
         "leeway": 0.05,
         "opacity": game.learnOpacity[game.learnCount],
@@ -247,10 +245,9 @@ function unshrinkKanji() {
 }
 
 function updateSRSDisplay(indices, srsResults, current) {
-    console.log(current);
     // Update graph
     var srsLevels = srsLevelSummary(indices, srsResults);
-    for (var i=0; i<srsLevels.length; i++) {
+    for (var i = 0; i < srsLevels.length; i++) {
         $("#rankBoxText" + i).text(srsLevels[i]);
     }
     $(".rankBoxSelected").removeClass("rankBoxSelected");
@@ -307,25 +304,30 @@ function kanjiGiveUp() {
         shrinkKanji();
         updateKanjiDisplay();
         updateGameButtons();
-        setTimeout(function() {
-            kanjiSRSReset();
-        }, 3000);
     }
 }
 
 function updateGameButtons() {
     if (game.kanjiComplete) {
         $("#drawingButtons").hide();
+        $("#giveUpButtons").hide();
         $("#resultButtons").show();
     } else {
-        $("#resultButtons").hide();
-        $("#drawingButtons").show();
-        if (game.currentKanji > 0) {
-            $("#undoButton").show();
-            $("#saveButton").show();
+        if (game.kanjiFailed) {
+            $("#resultButtons").hide();
+            $("#drawingButtons").hide();
+            $("#giveUpButtons").show();
         } else {
-            $("#undoButton").hide();
-            $("#saveButton").hide();
+            $("#resultButtons").hide();
+            $("#giveUpButtons").hide();
+            $("#drawingButtons").show();
+            if (game.currentKanji > 0) {
+                $("#undoButton").show();
+                $("#saveButton").show();
+            } else {
+                $("#undoButton").hide();
+                $("#saveButton").hide();
+            }
         }
     }
 }
@@ -373,9 +375,7 @@ function undoLastResult() {
 }
 
 function endGame() {
-    console.log("Game won");
     var results = game.srsResults;
-    console.log(results);
     for (var i = 0; i < results.length; i++) {
         var result = results[i];
         var kanji = srs.kanji[game.kanjiIds[i]];
@@ -389,6 +389,7 @@ function endGame() {
             }
         }
     }
+    saveSRS();
     loadMenu();
 }
 

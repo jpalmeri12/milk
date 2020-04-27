@@ -442,6 +442,18 @@ input {
     cursor: pointer;
 }
 
+#giveUpContinueButton {
+    width: 3rem;
+    height: 1.5rem;
+    left: 6rem;
+    top: 13rem;
+    position: absolute;
+    background-color: #ba1c1c;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+
 .resultButton {
     width: 3rem;
     height: 1.5rem;

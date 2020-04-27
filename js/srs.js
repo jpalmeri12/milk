@@ -2,8 +2,22 @@ var srs = {};
 
 var df = "YYYY-MM-DD";
 
+function loadSRS() {
+    var saveData = localStorage.getItem("milkSRS");
+    if (saveData == null) {
+        loadNew();
+    }
+    else {
+        srs = JSON.parse(saveData);
+        loadMenu();
+    }
+}
+
+function saveSRS() {
+    localStorage.setItem("milkSRS", JSON.stringify(srs));
+}
+
 function getCurrentTask() {
-    console.log(srs);
     // Iterate over kanji, noting those that are due for review
     var today = moment().format(df);
     var toReview = [];
@@ -29,7 +43,6 @@ function getCurrentTask() {
             toLearn.push(i);
         }
     }
-    console.log(toLearn);
     // Check date to see if we should learn new kanji
     if (moment(today).isAfter(srs.lastLearnedDay)) {
         var toAdd = srs.perDay;
@@ -112,9 +125,11 @@ function startNewSRS(kanjiPerDay, kanjiLimit, startFrom) {
     srs.learned = startFrom;
     srs.perDay = kanjiPerDay;
     srs.limit = kanjiLimit;
+    srs.tolerance = 20;
     srs.startDay = moment(today).subtract(days, "days").format(df);
     srs.lastLearnedDay = moment(today).subtract(1, "days").format(df);
     console.log("It's over")
+    saveSRS();
 }
 
 function srsAdvanceKanji(kanji, deltaLevel) {
