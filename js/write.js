@@ -156,10 +156,12 @@ DrawKanji.prototype.touch_trace = function (event) {
         if (!this.active) {
             return;
         }
-        var touch = event.touches[0];
-        var pos = getCanvasPosition(touch.pageX, touch.pageY);
-        console.log(event, pos);
-        this.trace(pos);
+        if (event.touches.length > 0) {
+            var touch = event.touches[0];
+            var pos = getCanvasPosition(touch.pageX, touch.pageY);
+            console.log(event, pos);
+            this.trace(pos);
+        }
         event.preventDefault();
     }
 }
