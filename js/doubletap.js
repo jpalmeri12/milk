@@ -1,5 +1,5 @@
-$(window).bind('touchend', function (e) {
-    console.log(e);
-    e.preventDefault();
-    $(e.target).click();
-});
+//$(window).bind('touchend', function (e) {
+//    console.log(e);
+//    e.preventDefault();
+//    $(e.target).click();
+//});
