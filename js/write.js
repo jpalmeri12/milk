@@ -73,8 +73,9 @@ DrawKanji.prototype.touch_end = function (event) {
     if (!game.kanjiComplete && !game.kanjiFailed) {
         alert("Not complete and not failed");
         if (this.active) {
-            alert("active");
+            alert("touch trace: ready");
             this.touch_trace(event);
+            alert("finish line: ready");
             this.finish_line();
         }
         this.touching = false;
