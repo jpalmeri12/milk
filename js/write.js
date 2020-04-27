@@ -122,9 +122,12 @@ DrawKanji.prototype.start_line = function () {
 }
 
 DrawKanji.prototype.finish_line = function () {
+    alert("finish line")
     if (this.point_num > 1) {
+        alert("finish stroke")
         this.finishStroke();
     } else {
+        alert("reset brush")
         this.sequence[this.stroke_num] = [];
         this.reset_brush();
     }
