@@ -11,6 +11,8 @@ var levelColors = ["#ff4d4f", "#ff7a45", "#ffa940", "#ffc53d", "#ffec3d", "#bae6
 $(async function () {
     // Hide everything
     $(".screenBox").hide();
+    // Numpads
+    $('input').numpad();
     // Load kanji database
     db = await makeKodanshaKanjiJSON();
     // Set up the drawing area

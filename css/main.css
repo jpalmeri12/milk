@@ -54,6 +54,8 @@ body {
     position: absolute;
     overflow: hidden;
     background-color: #f2f2f2;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 input {
@@ -108,7 +110,7 @@ input {
     text-align: center;
     color: #404040;
     font-size: 1rem;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
     position: absolute;
     top: .5rem;
@@ -121,7 +123,7 @@ input {
     text-align: center;
     color: #404040;
     font-size: .4rem;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     position: absolute;
 }
 
@@ -130,7 +132,7 @@ input {
     text-align: center;
     color: #404040;
     font-size: .4rem;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     border: .05rem solid black;
     border-radius: .25rem;
 }
@@ -154,7 +156,7 @@ input {
     left: 0.5rem;
     position: absolute;
     font-size: 1rem;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
     color: #808080;
 }
@@ -174,7 +176,7 @@ input {
     right: 0.5rem;
     position: absolute;
     font-size: 1rem;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
     color: #808080;
 }
@@ -205,14 +207,14 @@ input {
 }
 
 #menuStartLabelText {
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
     font-size: 1rem;
     color: rgba(255, 255, 255, .75);
 }
 
 #menuStartNumberText {
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
     font-size: 2rem;
     color: rgba(255, 255, 255, .75);
@@ -254,7 +256,7 @@ input {
     text-align: center;
     width: 100%;
     left: 0;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
     font-size: .45rem;
     color: rgba(0, 0, 0, .5);
@@ -356,7 +358,7 @@ input {
 }
 
 #headerNumText {
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
     font-size: 1rem;
     color: white;
@@ -370,7 +372,7 @@ input {
 }
 
 #headerKeywordText {
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-size: 0.5rem;
     color: black;
 }
@@ -384,7 +386,7 @@ input {
 }
 
 #headerReadingText {
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-size: 0.4rem;
 }
 
@@ -468,7 +470,7 @@ input {
 .buttonText {
     color: white;
     font-size: .6rem;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
 }
 
@@ -493,7 +495,7 @@ input {
 #statusModeText {
     color: white;
     font-size: .4rem;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
 }
 
@@ -507,7 +509,7 @@ input {
 #statusNumLeftText {
     color: #404040;
     font-size: 1rem;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
 }
 
@@ -521,7 +523,7 @@ input {
 #statusNumLabelText {
     color: #404040;
     font-size: .5rem;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
 }
 
@@ -553,7 +555,7 @@ input {
     transform: translateY(-50%);
     color: rgba(0, 0, 0, .5);
     font-size: .4rem;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
 }
 
@@ -562,7 +564,7 @@ input {
     text-align: center;
     color: #404040;
     font-size: 1rem;
-    font-family: "Kazesawa";
+    font-family: "Libre Franklin";
     font-weight: bold;
     position: absolute;
     top: .5rem;
