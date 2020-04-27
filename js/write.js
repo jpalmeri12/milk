@@ -69,9 +69,7 @@ DrawKanji.prototype.mouseout = function (event) {
 }
 
 DrawKanji.prototype.touch_end = function (event) {
-    alert("Fired touch end event");
     if (!game.kanjiComplete && !game.kanjiFailed) {
-        alert("Not complete and not failed");
         if (this.active) {
             alert("touch trace: ready");
             this.touch_trace(event);
