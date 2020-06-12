@@ -153,8 +153,8 @@ DrawKanji.prototype.touch_trace = function (event) {
         if (!this.active) {
             return;
         }
-        if (event.touches.length > 0) {
-            var touch = event.touches[0];
+        if (event.changedTouches.length > 0) {
+            var touch = event.changedTouches[0];
             var pos = getCanvasPosition(touch.pageX, touch.pageY);
             this.trace(pos);
         }
