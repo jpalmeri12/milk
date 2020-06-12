@@ -13,25 +13,11 @@ function DrawKanji() {
     });
     var el = this.canvas.element;
     el.onmousedown = function (event) {
-        alert("mouse down")
         self.mousedown(event);
     }
     el.onmousemove = function (event) {
-        alert("mouse move")
         self.mousemove(event);
     }
-//     el.ontouchstart = function (event) {
-//         alert("touch start");
-//         self.touch_start(event);
-//     }
-//     el.ontouchmove = function (event) {
-//         alert("touch move");
-//         self.touch_move(event);
-//     }
-//     el.ontouchend = function (event) {
-//         alert("touch end");
-//         self.touch_end(event);
-//     }
     el.addEventListener('touchstart', function(event) {
         //alert("touch start");
         self.touch_start(event);
