@@ -11,25 +11,37 @@ function DrawKanji() {
     $(this.canvas.element).mouseup(function (event) {
         self.mouseup(event);
     });
-    var el = this.canvas.element[0];
+    var el = this.canvas.element;
     el.onmousedown = function (event) {
         self.mousedown(event);
     }
     el.onmousemove = function (event) {
         self.mousemove(event);
     }
-    el.ontouchstart = function (event) {
+//     el.ontouchstart = function (event) {
+//         alert("touch start");
+//         self.touch_start(event);
+//     }
+//     el.ontouchmove = function (event) {
+//         alert("touch move");
+//         self.touch_move(event);
+//     }
+//     el.ontouchend = function (event) {
+//         alert("touch end");
+//         self.touch_end(event);
+//     }
+    el.addEventListener('touchstart', function(event) {
         alert("touch start");
         self.touch_start(event);
-    }
-    el.ontouchmove = function (event) {
+    });
+    el.addEventListener('touchmove', function(event) {
         alert("touch move");
         self.touch_move(event);
-    }
-    el.ontouchend = function (event) {
+    });
+    el.addEventListener('touchend', function(event) {
         alert("touch end");
         self.touch_end(event);
-    }
+    });
     el.onmouseout = function (event) {
         self.mouseout(event);
     }
@@ -298,7 +310,7 @@ DrawKanji.prototype.checkStroke = function (strokeId) {
 }
 
 function DrawCanvas() {
-    var canvas = $("#svgDraw");
+    var canvas = document.getElementById("svgDraw");
     this.size = canvas.offsetWidth;
     this.element = canvas;
     var self = this;
