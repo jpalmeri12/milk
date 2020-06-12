@@ -208,6 +208,7 @@ DrawKanji.prototype.addPoint = function (x, y) {
 
 // Sets the kanji to be drawn.
 DrawKanji.prototype.setKanji = async function (kanji, settings) {
+    alert("Set kanji")
     // Clear
     this.clear();
     // Load kanji SVG and add it to the file
