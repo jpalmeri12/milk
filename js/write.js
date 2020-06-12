@@ -19,6 +19,7 @@ function DrawKanji() {
         self.mousemove(event);
     }
     el.ontouchstart = function (event) {
+        alert("touch start");
         self.touch_start(event);
     }
     el.ontouchmove = function (event) {
@@ -26,6 +27,7 @@ function DrawKanji() {
         self.touch_move(event);
     }
     el.ontouchend = function (event) {
+        alert("touch end");
         self.touch_end(event);
     }
     el.onmouseout = function (event) {
