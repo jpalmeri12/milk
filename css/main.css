@@ -582,6 +582,28 @@ input {
     top: .5rem;
 }
 
+#optionsDownloadButton {
+    width: 6rem;
+    height: 1.5rem;
+    top: 2rem;
+    left: 1rem;
+    position: absolute;
+    background-color: #248f40;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+#optionsUploadButton {
+    width: 6rem;
+    height: 1.5rem;
+    top: 2rem;
+    left: 8rem;
+    position: absolute;
+    background-color: #248f40;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
 #optionsReturn {
     width: 14rem;
     height: 1.5rem;
@@ -596,3 +618,12 @@ input {
 #optionsReturnText {
     color: #d0d0d0;
 }
+
+/* Hide the file input using
+opacity */
+#loadSave {
+    position: absolute;
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+

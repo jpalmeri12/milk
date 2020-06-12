@@ -30,9 +30,9 @@
                 <br><br>
                 This app uses a spaced repetition system (SRS) because it seems to work for me, so you get to use it too. Let's get started!
                 <br><br>
-                New kanji per day: <input id="newNewKanji" type="text" value="10"><br><br>
-                Kanji limit (new + relearn; 0 for no limit): <input id="newKanjiLimit" type="text" value="0"><br><br>
-                Start from entry: <input id="newStartFromKanji" type="text" value="0"><br>
+                New kanji per day: <input id="newNewKanji" class="numpadInput" type="text" value="10"><br><br>
+                Kanji limit (new + relearn; 0 for no limit): <input id="newKanjiLimit" type="text" class="numpadInput" value="0"><br><br>
+                Start from entry: <input id="newStartFromKanji" class="numpadInput" type="text" value="0"><br>
             </div>
             <div id="newStart">
                 <div id="newStartText" class="ctext buttonText">Start</div>
@@ -129,6 +129,15 @@
         </div>
         <div id="optionScreen" class="screenBox">
             <div id="optionsTitle">Options</div>
+            <div id="optionsDownloadButton">
+                <div id="optionsDownloadText" class="buttonText ctext">Save Data</div>
+            </div>
+            <input id="loadSave" type="file">
+            <label for="loadSave">
+                <div id="optionsUploadButton">
+                    <div id="optionsUploadText" class="buttonText ctext">Load from Save</div>
+                </div>
+            </label>
             <div id="optionsReturn">
                 <div id="optionsReturnText" class="ctext buttonText">Return</div>
             </div>

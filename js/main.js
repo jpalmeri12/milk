@@ -12,7 +12,7 @@ $(async function () {
     // Hide everything
     $(".screenBox").hide();
     // Numpads
-    $('input').numpad();
+    $('.numpadInput').numpad();
     // Load kanji database
     db = await makeKodanshaKanjiJSON();
     // Set up the drawing area
@@ -65,8 +65,20 @@ function initGameButtons() {
     $("#optionsReturn").click(function () {
         showScreen("menuScreen");
     });
-    $("#giveUpContinueButton").click(function() {
+    $("#giveUpContinueButton").click(function () {
         kanjiSRSReset();
+    });
+    $("#optionsDownloadButton").click(function () {
+        downloadData();
+    });
+    $("#loadSave").change(function () {
+        const fileList = this.files; /* now you can work with the file list */
+        var fileReader = new FileReader();
+        fileReader.onload = function (fileLoadedEvent) {
+            var textFromFileLoaded = fileLoadedEvent.target.result;
+            loadFromData(textFromFileLoaded);
+        };
+        fileReader.readAsText(fileList[0], "UTF-8");
     });
 }
 
@@ -395,4 +407,28 @@ function endGame() {
 
 function showOptions() {
     showScreen("optionScreen");
+}
+
+function downloadData() {
+    var data = JSON.stringify(srs);
+    download("milk.json", data);
+}
+
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
+function loadFromData(loaded) {
+    try {
+        var newJson = JSON.parse(loaded);
+        srs = newJson;
+    } catch (e) {
+        alert("File upload failed");
+    }
 }
