@@ -22,6 +22,7 @@ function DrawKanji() {
         self.touch_start(event);
     }
     el.ontouchmove = function (event) {
+        alert("touch move");
         self.touch_move(event);
     }
     el.ontouchend = function (event) {
