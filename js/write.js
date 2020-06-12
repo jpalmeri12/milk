@@ -22,7 +22,7 @@ function DrawKanji() {
         self.touch_start(event);
     });
     el.addEventListener('touchmove', function(event) {
-        //alert("touch move");
+        alert("touch move");
         self.touch_move(event);
     });
     el.addEventListener('touchend', function(event) {
