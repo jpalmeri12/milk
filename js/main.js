@@ -428,6 +428,9 @@ function loadFromData(loaded) {
     try {
         var newJson = JSON.parse(loaded);
         srs = newJson;
+        console.log(srs);
+        saveSRS();
+        loadMenu();
     } catch (e) {
         alert("File upload failed");
     }
