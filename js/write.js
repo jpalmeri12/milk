@@ -32,7 +32,7 @@ function DrawKanji() {
         self.mouseout(event);
     }
     this.clear();
-    this.tolerance = 20;
+    this.tolerance = 15;
     this.strokes = [];
 }
 
