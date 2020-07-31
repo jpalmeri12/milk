@@ -1932,7 +1932,7 @@
 峡	gorge
 狭	narrow
 挟	hold between
-頰	cheeks
+頬	cheeks
 顎	jaw
 煩	vexing
 串	skewer
