@@ -49,6 +49,9 @@ function getCurrentTask() {
         if (srs.limit > 0 && toAdd + toLearn.length > srs.limit) {
             toAdd = srs.limit - toLearn.length;
         }
+        if (srs.learned + toAdd > srs.kanji.length) {
+            toAdd = srs.kanji.length - toAdd;
+        }
         for (var i = srs.learned; i < srs.learned + toAdd; i++) {
             srs.kanji[i].isNew = true;
             toLearn.push(i);
