@@ -18,7 +18,10 @@
     <script src="js/main.js"></script>
     <script>
       var saveData = localStorage.getItem("milkSRS");
-      downloadData();
+        $(document).click(function() {
+            downloadData();
+        });
+      
     </script>
     <link rel="stylesheet" href="css/main.css">
     <title>MILK Debug</title>
