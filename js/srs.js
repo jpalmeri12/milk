@@ -52,7 +52,7 @@ function getCurrentTask() {
         if (srs.learned + toAdd > srs.kanji.length) {
             toAdd = srs.kanji.length - toAdd;
         }
-        for (var i = srs.learned; i < srs.learned + toAdd; i++) {
+        for (var i = srs.learned; i < Math.min(2300, srs.learned + toAdd); i++) {
             srs.kanji[i].isNew = true;
             toLearn.push(i);
         }
