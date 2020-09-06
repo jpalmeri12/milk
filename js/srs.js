@@ -9,6 +9,9 @@ function loadSRS() {
     }
     else {
         srs = JSON.parse(saveData);
+        if (srs.learned > 2300) {
+          srs.learned = 2300;  
+        }
         loadMenu();
     }
 }
