@@ -59,7 +59,7 @@ function getCurrentTask() {
             srs.kanji[i].isNew = true;
             toLearn.push(i);
         }
-        srs.learned += toAdd;
+        srs.learned = Math.min(2300, srs.learned + toAdd);
         srs.lastLearnedDay = today;
     }
     // Check for new kanji
