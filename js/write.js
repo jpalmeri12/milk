@@ -8,6 +8,7 @@ function DrawKanji() {
     this.canvas = new DrawCanvas();
     this.canvas_size = 300;
     var self = this;
+    console.log("Updated");
     $(this.canvas.element).mouseup(function (event) {
         self.mouseup(event);
     });
@@ -26,7 +27,7 @@ function DrawKanji() {
         self.touch_move(event);
     });
     el.addEventListener('pointermove', function(event) {
-        // alert("pointer move");
+        alert("pointer move");
         self.touch_move(event);
     });
     el.addEventListener('touchend', function(event) {
