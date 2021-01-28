@@ -25,6 +25,10 @@ function DrawKanji() {
         //alert("touch move");
         self.touch_move(event);
     });
+    el.addEventListener('pointermove', function(event) {
+        // alert("pointer move");
+        self.touch_move(event);
+    });
     el.addEventListener('touchend', function(event) {
         self.touch_end(event);
     });
