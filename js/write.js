@@ -8,7 +8,6 @@ function DrawKanji() {
     this.canvas = new DrawCanvas();
     this.canvas_size = 300;
     var self = this;
-    alert("Updated 2");
     $(this.canvas.element).mouseup(function (event) {
         self.mouseup(event);
     });
@@ -19,18 +18,21 @@ function DrawKanji() {
     el.onmousemove = function (event) {
         self.mousemove(event);
     }
-    el.addEventListener('touchstart', function(event) {
+    el.addEventListener('touchstart', function (event) {
         self.touch_start(event);
     });
-    el.addEventListener('touchmove', function(event) {
+    el.addEventListener('touchmove', function (event) {
         //alert("touch move");
         self.touch_move(event);
     });
-    el.addEventListener('pointermove', function(event) {
+    el.addEventListener('pointermove', function (event) {
         // alert("pointer move");
         self.touch_move(event);
     });
-    el.addEventListener('touchend', function(event) {
+    el.addEventListener('touchend', function (event) {
+        self.touch_end(event);
+    });
+    el.addEventListener('pointerup', function (event) {
         self.touch_end(event);
     });
     el.onmouseout = function (event) {
@@ -156,9 +158,14 @@ DrawKanji.prototype.touch_trace = function (event) {
         if (!this.active) {
             return;
         }
-        if (event.changedTouches.length > 0) {
-            var touch = event.changedTouches[0];
-            var pos = getCanvasPosition(touch.pageX, touch.pageY);
+        if (event.changedTouches) {
+            if (event.changedTouches.length > 0) {
+                var touch = event.changedTouches[0];
+                var pos = getCanvasPosition(touch.pageX, touch.pageY);
+                this.trace(pos);
+            }
+        } else {
+            var pos = getCanvasPosition(event.pageX, event.pageY);
             this.trace(pos);
         }
         event.preventDefault();
